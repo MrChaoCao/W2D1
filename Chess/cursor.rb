@@ -41,6 +41,7 @@ class Cursor
 
   def get_input
     key = KEYMAP[read_char]
+    debugger
     handle_key(key)
   end
 
@@ -80,7 +81,7 @@ class Cursor
     when :return || :space
       @cursor_pos
     when :left || :right || :up || :down
-      update_pos() #needs arg
+      update_pos(MOVES[key])
       nil
     when :ctrl_c
       Process.exit(0)
@@ -88,5 +89,7 @@ class Cursor
   end
 
   def update_pos(diff)
+    @cursor_pos = diff
   end
+
 end

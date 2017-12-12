@@ -10,4 +10,13 @@ class Piece
   def to_s
     @name
   end
+
+  def empty?()
+
+  end
+
+  def symbol
+
+  end
+
 end

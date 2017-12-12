@@ -50,6 +50,10 @@ class Board
     end
   end
 
+# def in_bounds(pos)
+#   # r
+# end
+
 end
 class StartPositionError < StandardError
   def message
