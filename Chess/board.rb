@@ -43,6 +43,8 @@ class Board
   def move_piece!(from_pos, to_pos)
     if self[from_pos].nil?
       raise "No piece at start position"
+    elsif self[to_pos].nil?
+      raise "KLFD:JKLFSD:JKLFDSSJFL:DSFJDLKS:JFLKDSSDFJLK:FDSJKLFJSD:LFKDS::JSDFKL:DSFKLJDS:"
     else
       self[from_pos], self[to_pos] = self[to_pos], self[from_pos]
     end
