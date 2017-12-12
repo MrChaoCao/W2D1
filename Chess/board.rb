@@ -30,7 +30,7 @@ class Board
   end
 
   def self.blank_grid
-    Array.new(8) { Array.new(8) } #null pieces
+    Array.new(8) { Array.new(8) }
   end
 
   def find_king(color)
@@ -41,13 +41,16 @@ class Board
   end
 
   def move_piece!(from_pos, to_pos)
-debugger
-    from_val = @grid[from_pos]
-    to_val = @grid[to_pos]
-
-    @grid[from_pos] = to_val
-    @grid[to_val] = from_val
-    # @grid[from_pos], @grid[to_pos] = @grid[to_pos], @grid[from_pos]
+    if self[from_pos].nil?
+      raise "No piece at start position"
+    else
+      self[from_pos], self[to_pos] = self[to_pos], self[from_pos]
+    end
   end
 
+end
+class StartPositionError < StandardError
+  def message
+    'No piece at start position!'
+  end
 end
