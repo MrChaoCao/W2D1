@@ -41,7 +41,6 @@ class Cursor
 
   def get_input
     key = KEYMAP[read_char]
-    debugger
     handle_key(key)
   end
 
@@ -78,9 +77,9 @@ class Cursor
 
   def handle_key(key)
     case key
-    when :return || :space
+    when :return, :space
       @cursor_pos
-    when :left || :right || :up || :down
+    when :left, :right, :up, :down
       update_pos(MOVES[key])
       nil
     when :ctrl_c
@@ -89,7 +88,13 @@ class Cursor
   end
 
   def update_pos(diff)
-    @cursor_pos = diff
+    new_cursor_pos = []
+    new_cursor_pos << @cursor_pos.first + diff.first
+    new_cursor_pos << @cursor_pos.last + diff.last
+
+    # if Board.in_bounds?(@cursor_pos)
+      @cursor_pos = new_cursor_pos
+    # end
   end
 
 end
